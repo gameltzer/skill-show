@@ -1,0 +1,28 @@
+{
+  "name": "skill_show",
+  "version": "1.0.0",
+  "description": "This is an attempt to demonstrate and list skills",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Gabriel Meltzer",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gameltzer/skill-show.git"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-plugin-react": "^7.16.0"
+  },
+  "dependencies": {
+    "browserify": "^16.5.0",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-open": "^3.0.1",
+    "react": "^16.11.0",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}
