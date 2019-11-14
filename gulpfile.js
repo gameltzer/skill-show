@@ -6,6 +6,7 @@ const browserify = require('browserify')
 const reactify = require('reactify')
 const source = require('vinyl-source-stream')
 const concat = require('gulp-concat')
+const lint = require('gulp-eslint')
 
 const config = {
   port: 5500,
@@ -75,6 +76,15 @@ gulp.task ( // css (copies css files to dist for build))
   }
 )
 
+gulp.task(
+  'lint', 
+  function() {
+    return gulp.src(config.paths.js)
+      .pipe(lint({config: '.eslintrc.json'}))
+      .pipe(lint.format())
+  }
+)
+
 
 gulp.task(
   'watch', 
@@ -84,4 +94,4 @@ gulp.task(
   }
 )
 
-gulp.task('default', ['html', 'js', 'css', 'open', 'watch'])
+gulp.task('default', ['html', 'js', 'css', 'lint', 'open', 'watch'])

@@ -1,0 +1,12 @@
+gulpfile.js... use it to copy files from src to dest. Use browserify to bundle, along with reactify.
+
+also gulp-concat, and gulp-open is needed.
+
+You can use gulp-connect to create a server.
+
+Include jsx in eslint (also gulp-eslint) (
+
+Like this:     "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },

@@ -3,12 +3,15 @@
         "browser": true,
         "commonjs": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "jquery": true
     },
     "extends": "eslint:recommended",
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "jQuery": true,
+        "$": true
     },
     "parserOptions": {
         "ecmaFeatures": {
@@ -24,12 +27,15 @@
             "error",
             2
         ],
+        "no-unused-vars": [
+            "warn"
+        ],
         "linebreak-style": [
             "error",
             "windows"
         ],
         "quotes": [
-            "error",
+            "warn",
             "single"
         ],
         "semi": [
@@ -42,6 +48,8 @@
             "imports": "never",
             "exports": "never",
             "functions": "never"
-        }]
+        }],
+        "max-len": ["error", 
+            {"ignoreUrls": true}]
     }
 }
