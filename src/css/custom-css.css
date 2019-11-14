@@ -1,7 +1,7 @@
 .navbar-brand{
   padding: 10px;
 }
-nav_tabs {
+.nav_tabs {
   padding-top: 7px;
   padding-bottom: 0;
   height: 55px;
@@ -9,7 +9,7 @@ nav_tabs {
 }
 @media (min-width: 200px){
   .jumbotron {
-    pading-left: 20px;
+    padding-left: 20px;
   }
 }
 

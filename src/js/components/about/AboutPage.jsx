@@ -6,16 +6,15 @@ class About extends React.Component{
     return (
       <div>
         <h1>About this App</h1>
-        <p>A simple way to demonstrate skills
-          <ul>
-            <li>React</li> 
-            <li>ReactDOM</li>
-            <li>Flux</li>
-            <li>Node.js</li>
-            <li>Gulp</li>
-            <li>Browserify</li>
-          </ul>
-        </p>
+        <p>A simple way to demonstrate skills</p>
+        <ul>
+          <li>React</li> 
+          <li>ReactDOM</li>
+          <li>Flux</li>
+          <li>Node.js</li>
+          <li>Gulp</li>
+          <li>Browserify</li>
+        </ul>
       </div>
     )
   }

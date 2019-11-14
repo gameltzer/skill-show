@@ -42942,6 +42942,7 @@ const Header = require('./js/components/common/Header.jsx')
 const Home = require('./js/components/home/HomePage.jsx')
 const About = require('./js/components/about/AboutPage.jsx')
 
+
 class App extends React.Component{
   render(){
     let Child
@@ -42955,7 +42956,7 @@ class App extends React.Component{
     }
     return (
       React.createElement("div", null, 
-        /* <Header /> */
+        React.createElement(Header, null), 
         React.createElement(Child, null)
       )
     )
@@ -42967,7 +42968,7 @@ function _routeMe() {
 }
 
 window.addEventListener('hashchange', _routeMe)
-_routeMe
+_routeMe()
 
 },{"./js/components/about/AboutPage.jsx":19,"./js/components/common/Header.jsx":20,"./js/components/home/HomePage.jsx":21,"jquery":1,"react":11,"react-dom":8}],19:[function(require,module,exports){
 const React = require('react')
@@ -42978,7 +42979,7 @@ class About extends React.Component{
     return (
       React.createElement("div", null, 
         React.createElement("h1", null, "About this App"), 
-        React.createElement("p", null, "A simple way to demonstrate skills", 
+        React.createElement("p", null, "A simple way to demonstrate skills"), 
           React.createElement("ul", null, 
             React.createElement("li", null, "React"), 
             React.createElement("li", null, "ReactDOM"), 
@@ -42987,7 +42988,6 @@ class About extends React.Component{
             React.createElement("li", null, "Gulp"), 
             React.createElement("li", null, "Browserify")
           )
-        )
       )
     )
   }
@@ -43004,7 +43004,8 @@ class Header extends React.Component{
     return (
       React.createElement("nav", {className: "navbar navbar-default"}, 
         React.createElement("div", {className: "container-fluid"}, 
-          React.createElement("a", {href: "/", className: "navbar-brand"}
+          React.createElement("a", {href: "/", className: "navbar-brand"}, 
+            "test"
           ), 
           React.createElement("ul", {className: "nav nav-tabs"}, 
             React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
@@ -43020,7 +43021,7 @@ module.exports = Header
 
 },{"react":11,"react-dom":8}],21:[function(require,module,exports){
 var React = require('react')
-var ReactDom = require('react-dom')
+var ReactDOM = require('react-dom')
 
 class Home extends React.Component{
   render() {

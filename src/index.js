@@ -6,6 +6,7 @@ const Header = require('./js/components/common/Header.jsx')
 const Home = require('./js/components/home/HomePage.jsx')
 const About = require('./js/components/about/AboutPage.jsx')
 
+
 class App extends React.Component{
   render(){
     let Child
@@ -19,7 +20,7 @@ class App extends React.Component{
     }
     return (
       <div>
-        {/* <Header /> */}
+        <Header />
         <Child />
       </div>
     )
@@ -31,4 +32,4 @@ function _routeMe() {
 }
 
 window.addEventListener('hashchange', _routeMe)
-_routeMe
+_routeMe()

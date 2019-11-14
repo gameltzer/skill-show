@@ -4,9 +4,10 @@ const ReactDOM = require('react-dom')
 class Header extends React.Component{
   render() {
     return (
-      <nav className= "navbar navbar-default">
+      <nav className="navbar navbar-default">
         <div className="container-fluid">
           <a href="/" className="navbar-brand">
+            test
           </a>
           <ul className="nav nav-tabs">
             <li><a href="#">Home</a></li>
