@@ -1,0 +1,1 @@
+The goal of this is to allow new "stories" displaying specific skills to the page via user input. A storage method still needs to be determined, as well as whether or not Mongo will be useful.

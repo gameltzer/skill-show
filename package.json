@@ -2,7 +2,7 @@
   "name": "skill_show",
   "version": "1.0.0",
   "description": "This is an attempt to demonstrate and list skills",
-  "main": "index.js",
+  "main": "Index.js",
   "scripts": {
     "test": "mocha"
   },

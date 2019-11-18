@@ -42941,22 +42941,35 @@ const ReactDOM = require('react-dom')
 const Header = require('./js/components/common/Header.jsx')
 const Home = require('./js/components/home/HomePage.jsx')
 const About = require('./js/components/about/AboutPage.jsx')
+const Skills = require('./js/components/skills/SkillsPage.jsx')
 
 
 class App extends React.Component{
+  constructor(){
+    super()
+    this.state = {selected: 'Home'}
+  }
+
   render(){
     let Child
     switch (this.props.route) {
     case 'about':
       Child = About
+      this.state = {selected: 'About'}
+      break
+    case 'skills':
+      Child = Skills
+      this.state = {selected: 'Skills'}
+
       break
     default: 
       Child = Home
+      this.state = {selected: 'Home'}
       break
     }
     return (
       React.createElement("div", null, 
-        React.createElement(Header, null), 
+        React.createElement(Header, {selected: this.state.selected}), 
         React.createElement(Child, null)
       )
     )
@@ -42970,7 +42983,7 @@ function _routeMe() {
 window.addEventListener('hashchange', _routeMe)
 _routeMe()
 
-},{"./js/components/about/AboutPage.jsx":19,"./js/components/common/Header.jsx":20,"./js/components/home/HomePage.jsx":21,"jquery":1,"react":11,"react-dom":8}],19:[function(require,module,exports){
+},{"./js/components/about/AboutPage.jsx":19,"./js/components/common/Header.jsx":20,"./js/components/home/HomePage.jsx":21,"./js/components/skills/SkillsPage.jsx":22,"jquery":1,"react":11,"react-dom":8}],19:[function(require,module,exports){
 const React = require('react')
 const ReactDOM = require('react-dom')
 
@@ -42980,14 +42993,14 @@ class About extends React.Component{
       React.createElement("div", null, 
         React.createElement("h1", null, "About this App"), 
         React.createElement("p", null, "A simple way to demonstrate skills"), 
-          React.createElement("ul", null, 
-            React.createElement("li", null, "React"), 
-            React.createElement("li", null, "ReactDOM"), 
-            React.createElement("li", null, "Flux"), 
-            React.createElement("li", null, "Node.js"), 
-            React.createElement("li", null, "Gulp"), 
-            React.createElement("li", null, "Browserify")
-          )
+        React.createElement("ul", null, 
+          React.createElement("li", null, "React"), 
+          React.createElement("li", null, "ReactDOM"), 
+          React.createElement("li", null, "Flux"), 
+          React.createElement("li", null, "Node.js"), 
+          React.createElement("li", null, "Gulp"), 
+          React.createElement("li", null, "Browserify")
+        )
       )
     )
   }
@@ -43000,16 +43013,47 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 
 class Header extends React.Component{
+  constructor(){
+    super()
+  }
+  // This gets the current elements of the navbar list
+  getListArray(){
+    const nav =document.getElementsByTagName('nav')
+    return nav[0].children[0].children[0].children
+  }
+
+  setSelected(listElements, selectedElement){
+    for (const item of listElements ){
+      if (item.children[0].innerHTML === selectedElement) {
+        item.className =  'active'
+      }
+      else{
+        item.className = ''
+      }
+    }
+  }
+  componentDidMount() {
+    const selectedElement = this.props.selected
+    const listArray = this.getListArray()
+    this.setSelected(listArray, selectedElement)
+
+  }
+
+  componentDidUpdate() {
+    const selectedElement = this.props.selected
+    const listArray = this.getListArray()
+    console.log('change')
+    this.setSelected(listArray, selectedElement)
+  }
+
   render() {
     return (
       React.createElement("nav", {className: "navbar navbar-default"}, 
         React.createElement("div", {className: "container-fluid"}, 
-          React.createElement("a", {href: "/", className: "navbar-brand"}, 
-            "test"
-          ), 
-          React.createElement("ul", {className: "nav nav-tabs"}, 
+          React.createElement("ul", {className: "nav nav-pills"}, 
             React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
-            React.createElement("li", null, React.createElement("a", {href: "/#about"}, "About"))
+            React.createElement("li", null, React.createElement("a", {href: "/#about"}, "About")), 
+            React.createElement("li", null, React.createElement("a", {href: "/#skills"}, "Skills"))
           )
         )
       )
@@ -43035,5 +43079,32 @@ class Home extends React.Component{
 }
 
 module.exports =  Home 
+
+},{"react":11,"react-dom":8}],22:[function(require,module,exports){
+const React = require('react')
+const ReactDOM = require('react-dom')
+
+class Skills extends React.Component{
+  render(){
+    return (
+      React.createElement("div", null, 
+        React.createElement("p", null, "Skills page"), 
+        React.createElement("ul", null, "JS and Web Technologies", 
+          React.createElement("li", null, "JavaScript"), 
+          React.createElement("li", null, "Node.js"), 
+          React.createElement("li", null, "REST apis"), 
+          React.createElement("li", null, "React.js")
+        ), 
+        React.createElement("ul", null, "AWS", 
+          React.createElement("li", null, "Lambda"), 
+          React.createElement("li", null, "Elastic beanstalk"), 
+          React.createElement("li", null, "Deployments and integration testing.")
+        )
+      )
+    )
+  }
+}
+
+module.exports = Skills
 
 },{"react":11,"react-dom":8}]},{},[18]);

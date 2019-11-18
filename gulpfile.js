@@ -13,10 +13,11 @@ const config = {
   baseUrl : 'http://localhost',
   paths: {
     html: './src/*.html',
-    js: './src/**/*.js',
-    indexJs: './src/index.js',
+    js: './src/**/*.js*',
+    indexJs: './src/Index.js',
     css: [
-      './node_modules/bootstrap/dist/css/bootstrap.min.css'
+      './node_modules/bootstrap/dist/css/bootstrap.min.css',
+      './node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
     ],
     dist: './dist',
   },
