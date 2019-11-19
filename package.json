@@ -30,6 +30,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
     "reactify": "^1.1.1",
     "vinyl-source-stream": "^2.0.0"
   }

@@ -1,5 +1,7 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
+const Link = require('react-router-dom').Link
+
 
 class Header extends React.Component{
   constructor(){
@@ -40,9 +42,9 @@ class Header extends React.Component{
       <nav className="navbar navbar-default">
         <div className="container-fluid">
           <ul className="nav nav-pills">
-            <li><a href="#">Home</a></li>
-            <li><a href="/#about">About</a></li>
-            <li><a href="/#skills">Skills</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/skills">Skills</Link></li>
           </ul>
         </div>
       </nav>
