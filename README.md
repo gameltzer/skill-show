@@ -1,7 +1,7 @@
 #### Gabriel Meltzer
 #### Last modified 1/8/2020
 
-# A simple webapp for viewing and addint a list of skills.
+# A simple webapp for viewing and adding a list of skills.
 
 
 The goal of this app is to demonstrate basic React fluency via an app
