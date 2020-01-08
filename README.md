@@ -23,4 +23,4 @@ If it does not automatically open a browser window, you can go to
 
 ## Notes
 
-As of 1/8/2020 moment, additions made to skills will not be saved if the server is shutdown. The data is not yet persistent. 
+As of 1/8/2020, additions made to skills will not be saved if the server is stopped. The data is not yet persistent. 
