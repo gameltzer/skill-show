@@ -17,7 +17,9 @@ const config = {
     indexJs: './src/Index.jsx',
     css: [
       './node_modules/bootstrap/dist/css/bootstrap.min.css',
-      './node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
+      './node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
+      './src/css/*.css',
+      './node_modules/toastr/build/toastr.css'
     ],
     dist: './dist',
   },
@@ -92,6 +94,7 @@ gulp.task(
   function() {
     gulp.watch(config.paths.html, ['html'])
     gulp.watch(config.paths.js, ['js'])
+    gulp.watch(config.paths.css, ['css'])
   }
 )
 

@@ -1,26 +1,34 @@
 const React = require('react')
-const ReactDOM = require('react-dom')
 const Link = require('react-router-dom').Link
+const skills = require('../../../api/SkillsData').skills
 
 class Skills extends React.Component{
+  constructor(props) {
+    super(props)
+    this.addListItem = this.addListItem.bind(this)
+    this.state = {skills}
+  }
+
+  addListItem(skill) {
+    return (
+      <li className="list-group-item">{skill}</li>
+    )
+  }
   render(){
     return (
       <div>
-        <p>Skills page</p>
+        <h2 className="text-center well">Skills</h2>
+        <ul className="list-group">
+          {this.state.skills.map(
+            (item) => this.addListItem(item.skill) 
+          )}
+        </ul>
         <p>
-          <Link to="addskills" className="btn btn-default btn-xs">Add Recipe
-          </Link></p>
-        <ul>JS and Web Technologies
-          <li>JavaScript</li>
-          <li>Node.js</li>
-          <li>REST apis</li>
-          <li>React.js</li>
-        </ul>
-        <ul>AWS
-          <li>Lambda</li>
-          <li>Elastic beanstalk</li>
-          <li>Deployments and integration testing.</li>
-        </ul>
+          <Link to="addskills" 
+            className="btn btn-primary col-sm-offset-5 col-md-2 col-lg-2
+            col-md-offset-5 col-lg-offset-5">
+            Add Skills
+          </Link></p>    
       </div>
     )
   }

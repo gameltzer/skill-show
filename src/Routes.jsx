@@ -8,24 +8,30 @@ const Home = require('./js/components/home/HomePage.jsx')
 const About = require('./js/components/about/AboutPage.jsx')
 const Skills = require('./js/components/skills/SkillsPage.jsx')
 const AddSkills = require('./js/components/skills/AddSkills.jsx')
+const NotFound = require('./js/components/notFound/NotFoundPage.jsx')
 class Routes extends React.Component { 
   render() {
     return (<Router>
       <Header />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/skills">
-          <Skills />
-        </Route>
-        <Route path="/addskills">
-          <AddSkills />
-        </Route>
-      </Switch>
+      <div className="container-fluid">
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/skills">
+            <Skills />
+          </Route>
+          <Route path="/addskills">
+            <AddSkills />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </div>
     
     </Router>
     )

@@ -1,11 +1,10 @@
 const React = require('react')
-const ReactDOM = require('react-dom')
 const Link = require('react-router-dom').Link
 
 
 class Header extends React.Component{
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
   }
   // This gets the current elements of the navbar list
   getListArray(){

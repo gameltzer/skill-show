@@ -5,8 +5,8 @@ class Home extends React.Component{
   render() {
     return (
       <div className="jumbotron">
-        <h1>My home page</h1>
-        <h2>This will be adjusted later</h2>
+        <h1>Skills with React</h1>
+        <h2>View and add a list of skills!</h2>
       </div>
     )
   }
