@@ -1,10 +1,10 @@
 #### Gabriel Meltzer
 #### Last modified 1/8/2020
 
-# Simple webpage for displaying skills as proof.
+# A simple webapp for viewing and addint a list of skills.
 
 
-The goal of this page is to demonstrate basic React fluency via an app
+The goal of this app is to demonstrate basic React fluency via an app
 that allows the user to add skills that they may possess to a list displayed on
 the page. The list can be accessed  by clicking on ```Skills```. New skills can be added
 by clicking the ```Add Skills``` button.
