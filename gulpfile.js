@@ -1,12 +1,12 @@
 const gulp = require('gulp')
-const conn = require('gulp-connect')
-const open = require('gulp-open')
+const connImport = require('gulp-connect')
+const openImport = require('gulp-open')
 
 const browserify = require('browserify')
 const reactify = require('reactify')
 const source = require('vinyl-source-stream')
 const concat = require('gulp-concat')
-const lint = require('gulp-eslint')
+const lintImport = require('gulp-eslint')
 
 const config = {
   port: 5500,
@@ -24,53 +24,52 @@ const config = {
     dist: './dist',
   },
 }
-gulp.task( // conn
-  'conn', 
-  function() {
-    conn.server({
-      root: ['dist'],
-      port: config.port,
-      base: config.baseUrl,
-      livereload: true,
-    })
-  }
-)
 
-gulp.task( // open
-  'open', 
-  ['conn'], 
-  function() {
-    gulp.src('dist/index.html')
-      .pipe(
-        open(
-          {uri: config.baseUrl + ':' + config.port + '/'}
-        )
+function conn(cb){
+  connImport.server({
+    root: ['dist'],
+    port: config.port,
+    base: config.baseUrl,
+    livereload: true,
+  })
+  cb()
+}
+
+function open(cb) {
+  gulp.src('dist/index.html')
+    .pipe(
+      openImport(
+        {uri: config.baseUrl + ':' + config.port + '/'}
       )
-  }
-)
+    )
+  cb()
+}
 
-gulp.task( //html ( copies html files to dist for build)
-  'html', 
-  function() {
-    gulp.src(config.paths.html)
-      .pipe(gulp.dest(config.paths.dist))
-      .pipe(conn.reload())
-  }
-)
+function html(cb){
+  gulp.src(config.paths.html)
+    .pipe(gulp.dest(config.paths.dist))
+    .pipe(connImport.reload())
+  cb()
+}
 
-gulp.task( // js (copies js files to dist for build)
-  'js', 
-  function() {
-    browserify(config.paths.indexJs)
-      .transform(reactify)
-      .bundle()
-      .on('error', console.error.bind(console))
-      .pipe(source('bundle.js'))
-      .pipe(gulp.dest(config.paths.dist + '/js'))
-      .pipe(conn.reload())
-  }
-)
+function js(cb){
+  browserify(config.paths.indexJs)
+    .transform(reactify)
+    .bundle()
+    .on('error', console.error.bind(console))
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest(config.paths.dist + '/js'))
+    .pipe(connImport.reload())
+  cb()
+}
 
+
+function css(cb) {
+  gulp.src(config.paths.css)
+    .pipe(concat('bundle.css'))
+    .pipe(gulp.dest(config.paths.dist + '/css'))
+  cb()
+}
 gulp.task ( // css (copies css files to dist for build))
   'css', function() {
     gulp.src(config.paths.css)
@@ -79,23 +78,21 @@ gulp.task ( // css (copies css files to dist for build))
   }
 )
 
+//TODO
 gulp.task(
   'lint', 
   function() {
     return gulp.src(config.paths.js)
-      .pipe(lint({config: '.eslintrc.json'}))
-      .pipe(lint.format())
+      .pipe(lintImport({config: '.eslintImportrc.json'}))
+      .pipe(lintImport.format())
   }
 )
 
+function watch(cb){
+  gulp.watch(config.paths.html, html)
+  gulp.watch(config.paths.js, js)
+  gulp.watch(config.paths.css, css)
+  cb()
+}
 
-gulp.task(
-  'watch', 
-  function() {
-    gulp.watch(config.paths.html, ['html'])
-    gulp.watch(config.paths.js, ['js'])
-    gulp.watch(config.paths.css, ['css'])
-  }
-)
-
-gulp.task('default', ['html', 'js', 'css', 'lint', 'open', 'watch'])
+exports.default = gulp.series(gulp.parallel(html, js, css), conn, open, watch)
